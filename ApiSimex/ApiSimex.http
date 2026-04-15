@@ -1,0 +1,193 @@
+@ApiSimex_HostAddress = https://localhost:7007
+
+GET {{ApiSimex_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
+@agenteId=3
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId={{agenteId}}
+
+###
+
+
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId={{agenteId}}&searchQuery={{searchQuery}}
+
+###
+
+@agenteId=3
+@searchQuery=
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId={{agenteId}}&searchQuery={{searchQuery}}
+
+###
+
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId=3
+
+###
+@agenteId=3
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId={{agenteId}}
+
+
+###
+
+@textoPlano=123456
+GET {{ApiSimex_HostAddress}}/api/auth/generar-hash?textoPlano={{textoPlano}}
+
+###
+
+POST {{ApiSimex_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "comercial@simex.com",
+  "password": "123456"
+}
+
+###
+@agenteId=3
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MDg4NTk2LCJleHAiOjE3NzYxMTczOTYsImlhdCI6MTc3NjA4ODU5NiwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.TEOESMBBrVrDQn2du_zW48Wue97KT58JWvoilUWU8yg
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId={{agenteId}}
+Authorization: Bearer {{miTokenVip}}
+###
+
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial?agenteId={{agenteId}}&searchQuery={{searchQuery}}
+
+###
+
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial
+Authorization: Bearer {{miTokenVip}}
+###
+
+GET {{ApiSimex_HostAddress}}/api/auth/generar-hash?textoPlano={{textoPlano}}
+
+###
+
+GET {{ApiSimex_HostAddress}}/api/auth/generar-hash?textoPlano={{textoPlano}}
+
+###
+
+@pedidoId=1
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+GET {{ApiSimex_HostAddress}}/api/pedidoscomercial/{{pedidoId}}/seguimiento
+Authorization: Bearer {{miTokenVip}}
+###
+
+@pedidoId=1
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+POST {{ApiSimex_HostAddress}}/api/pedidoscomercial/{{pedidoId}}/siguiente-paso
+Authorization: Bearer {{miTokenVip}}
+###
+
+POST {{ApiSimex_HostAddress}}/api/pedidoscomercial/{{pedidoId}}/siguiente-paso
+
+###
+
+@id=3
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+GET {{ApiSimex_HostAddress}}/api/perfilagente/{{id}}
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@id=3
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+PUT {{ApiSimex_HostAddress}}/api/perfilagente/dades/{{id}}
+Authorization: Bearer {{miTokenVip}}
+Content-Type: application/json
+
+{
+  "nom": "Maria",
+  "cognoms": "López Sanchez",
+  "correu": "agente@simex.com"
+}
+
+###
+
+@id=3
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+PUT {{ApiSimex_HostAddress}}/api/perfilagente/idioma/{{id}}
+Authorization: Bearer {{miTokenVip}}
+Content-Type: application/json
+
+{
+  "idioma": "es"
+}
+
+###
+
+@agentId=3
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+GET {{ApiSimex_HostAddress}}/api/dashboardagente/resumen/{{agentId}}
+Authorization: Bearer {{miTokenVip}}
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiIzIiwiZW1haWwiOiJjb21lcmNpYWxAc2ltZXguY29tIiwibmJmIjoxNzc2MTA0MzIwLCJleHAiOjE3NzYxMzMxMjAsImlhdCI6MTc3NjEwNDMyMCwiaXNzIjoiQXBpU2ltZXgiLCJhdWQiOiJBcHBBbmRyb2lkU2ltZXgifQ.UM_XNrq2UL5TPXfkRMGmzENlub-GjYKzdhd8uObUq9o
+GET {{ApiSimex_HostAddress}}/api/dashboardagente/alertas
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@textoPlano=54321
+GET {{ApiSimex_HostAddress}}/api/auth/generar-hash?textoPlano={{textoPlano}}
+
+###
+
+POST {{ApiSimex_HostAddress}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "client@empresa.com",
+  "password": "54321"
+}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyMDgwOTIsImV4cCI6MTc3NjIzNjg5MiwiaWF0IjoxNzc2MjA4MDkyLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.WMselemuCoa1TR_ngpS3SRrVfeHYssOV6gzu3-IgVI8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/Perfil
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyMDgwOTIsImV4cCI6MTc3NjIzNjg5MiwiaWF0IjoxNzc2MjA4MDkyLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.WMselemuCoa1TR_ngpS3SRrVfeHYssOV6gzu3-IgVI8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/UltimaPropuesta
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyMDgwOTIsImV4cCI6MTc3NjIzNjg5MiwiaWF0IjoxNzc2MjA4MDkyLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.WMselemuCoa1TR_ngpS3SRrVfeHYssOV6gzu3-IgVI8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/UltimosEnvios
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyMDgwOTIsImV4cCI6MTc3NjIzNjg5MiwiaWF0IjoxNzc2MjA4MDkyLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.WMselemuCoa1TR_ngpS3SRrVfeHYssOV6gzu3-IgVI8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/TodasLasPropuestas
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@id=1
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNjA3MTAsImV4cCI6MTc3NjI4OTUxMCwiaWF0IjoxNzc2MjYwNzEwLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.lV0drj-Pxp-gSMphuo_YSV6sm5Q_ilEv4Oqs-6Fu9C0
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/DetallePropuesta/{{id}}
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@id=1
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNjA3MTAsImV4cCI6MTc3NjI4OTUxMCwiaWF0IjoxNzc2MjYwNzEwLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.lV0drj-Pxp-gSMphuo_YSV6sm5Q_ilEv4Oqs-6Fu9C0
+PUT {{ApiSimex_HostAddress}}/api/dashboardcliente/AceptarPropuesta/{{id}}
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@id=1
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNjA3MTAsImV4cCI6MTc3NjI4OTUxMCwiaWF0IjoxNzc2MjYwNzEwLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.lV0drj-Pxp-gSMphuo_YSV6sm5Q_ilEv4Oqs-6Fu9C0
+PUT {{ApiSimex_HostAddress}}/api/dashboardcliente/RechazarPropuesta/{{id}}
+Authorization: Bearer {{miTokenVip}}
+Content-Type: application/json
+
+{
+  "razon": "El precio es demasiado alto"
+}
+
+###
