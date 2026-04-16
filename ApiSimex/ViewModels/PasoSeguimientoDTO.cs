@@ -4,7 +4,7 @@
     {
         public int TrackingStepId { get; set; }
         public string Nombre { get; set; } = string.Empty;
-        public string Estado { get; set; } = string.Empty; // "Pendent", "En curs", "Completat"
+        public string Estado { get; set; } = string.Empty;
         public int Orden { get; set; }
     }
 }

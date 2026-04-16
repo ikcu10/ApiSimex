@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ApiSimex.Models; // Tu namespace de modelos
-using ApiSimex.ViewModels;   // Tu namespace de DTOs
+using ApiSimex.Models;
+using ApiSimex.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 
 namespace ApiSimex.Controllers
@@ -11,14 +11,14 @@ namespace ApiSimex.Controllers
     [Authorize]
     public class PerfilAgenteController : ControllerBase
     {
-        private readonly SimexContext _context; // ⚠️ CAMBIA ESTO por tu Contexto real
+        private readonly SimexContext _context;
 
         public PerfilAgenteController(SimexContext context)
         {
             _context = context;
         }
 
-        // 1. OBTENER EL PERFIL: GET api/PerfilAgent/5
+        // ENDPOINT: OBTENER EL PERFIL
         [HttpGet("{id}")]
         public async Task<ActionResult<PerfilAgenteDTO>> GetPerfil(int id)
         {
@@ -28,9 +28,6 @@ namespace ApiSimex.Controllers
             {
                 return NotFound(new { message = "Usuario no encontrado." });
             }
-
-            // Opcional: Validar que sea un Agente Comercial (Asumiendo que su RolId es 3, cámbialo si es otro)
-            // if (usuari.RolId != 3) return BadRequest("El usuario no es un agente comercial.");
 
             var perfilDto = new PerfilAgenteDTO
             {
@@ -44,7 +41,7 @@ namespace ApiSimex.Controllers
             return Ok(perfilDto);
         }
 
-        // 2. ACTUALIZAR DATOS PERSONALES: PUT api/PerfilAgent/dades/5
+        //ENDPOINT: ACTUALIZAR DATOS PERSONALES
         [HttpPut("dades/{id}")]
         public async Task<IActionResult> ActualitzarDades(int id, ActualizarDatosAgenteDTO dto)
         {
@@ -70,7 +67,7 @@ namespace ApiSimex.Controllers
             }
         }
 
-        // 3. ACTUALIZAR IDIOMA: PUT api/PerfilAgent/idioma/5
+        //ENDPOINT: ACTUALIZAR IDIOMA
         [HttpPut("idioma/{id}")]
         public async Task<IActionResult> ActualitzarIdioma(int id, ActualizarIdiomaAgenteDTO dto)
         {

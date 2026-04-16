@@ -17,7 +17,7 @@ namespace ApiSimex.Controllers
         private readonly SimexContext _context;
         private readonly IConfiguration _configuration;
 
-        // Inyectamos la base de datos y la configuración (para leer la clave secreta)
+        // Inyectamos la base de datos y la configuración
         public AuthController(SimexContext context, IConfiguration configuration)
         {
             _context = context;
@@ -37,8 +37,6 @@ namespace ApiSimex.Controllers
             }
 
             // 2. Verificar la contraseña con BCrypt
-            // ¡OJO! Esto asume que la columna en tu BD se llama 'Password' o similar. 
-            // Cámbialo por el nombre real de tu propiedad (ej: usuario.ClauAes o usuario.Contrasenya)
             bool esPasswordValido = BCrypt.Net.BCrypt.Verify(request.Password, usuario.Contrasenya);
 
             if (!esPasswordValido)
@@ -46,21 +44,19 @@ namespace ApiSimex.Controllers
                 return Unauthorized(new { mensaje = "Email o contraseña incorrectos" });
             }
 
-            // 3. Si todo es correcto, creamos el Token JWT
+            // 3. Creamos el Token JWT
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
 
-            // Aquí "escondemos" datos dentro del token (Claims)
+            // Aquí "escondemos" datos dentro del token
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, usuario.Id.ToString()),
                     new Claim(ClaimTypes.Email, usuario.Correu),
-                    // Si tienes un campo de Rol, podrías añadirlo aquí:
-                    // new Claim(ClaimTypes.Role, usuario.RolNombre) 
                 }),
-                Expires = DateTime.UtcNow.AddHours(8), // El token caduca en 8 horas
+                Expires = DateTime.UtcNow.AddHours(8),
                 Issuer = _configuration["Jwt:Issuer"],
                 Audience = _configuration["Jwt:Audience"],
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -82,7 +78,6 @@ namespace ApiSimex.Controllers
         [HttpGet("generar-hash")]
         public IActionResult GenerarHash(string textoPlano)
         {
-            // Esto coge el texto que le pases y lo convierte en un Hash de BCrypt
             string hash = BCrypt.Net.BCrypt.HashPassword(textoPlano);
 
             return Ok(new

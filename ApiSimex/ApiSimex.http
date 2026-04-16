@@ -191,3 +191,51 @@ Content-Type: application/json
 }
 
 ###
+
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNzA3OTEsImV4cCI6MTc3NjI5OTU5MSwiaWF0IjoxNzc2MjcwNzkxLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.NBvw03paJXyYTHDiLCFCsI4SpbYKRs7L5NP5ygHsSWY
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/PedidosActivos?busqueda={{busqueda}}
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNzA3OTEsImV4cCI6MTc3NjI5OTU5MSwiaWF0IjoxNzc2MjcwNzkxLCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.NBvw03paJXyYTHDiLCFCsI4SpbYKRs7L5NP5ygHsSWY
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/PedidosActivos?busqueda={{busqueda}}
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@busqueda=null
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNzE4MzYsImV4cCI6MTc3NjMwMDYzNiwiaWF0IjoxNzc2MjcxODM2LCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.iDinjbGCVqEsgQ8tptdqxpoHQ8R9zL39wqOkGzox6l8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/PedidosActivos?busqueda={{busqueda}}
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNzE4MzYsImV4cCI6MTc3NjMwMDYzNiwiaWF0IjoxNzc2MjcxODM2LCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.iDinjbGCVqEsgQ8tptdqxpoHQ8R9zL39wqOkGzox6l8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/PedidosActivos
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNzE4MzYsImV4cCI6MTc3NjMwMDYzNiwiaWF0IjoxNzc2MjcxODM2LCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.iDinjbGCVqEsgQ8tptdqxpoHQ8R9zL39wqOkGzox6l8
+@busqueda=Madrid
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/PedidosActivos?busqueda={{busqueda}}
+Authorization: Bearer {{miTokenVip}}
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/HistorialPedidos
+Authorization: {{$apiKey}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyNzE4MzYsImV4cCI6MTc3NjMwMDYzNiwiaWF0IjoxNzc2MjcxODM2LCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.iDinjbGCVqEsgQ8tptdqxpoHQ8R9zL39wqOkGzox6l8
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/HistorialPedidos
+Authorization: Bearer {{miTokenVip}}
+
+###
+
+@miTokenVip=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1laWQiOiI0IiwiZW1haWwiOiJjbGllbnRAZW1wcmVzYS5jb20iLCJuYmYiOjE3NzYyODk1MDgsImV4cCI6MTc3NjMxODMwOCwiaWF0IjoxNzc2Mjg5NTA4LCJpc3MiOiJBcGlTaW1leCIsImF1ZCI6IkFwcEFuZHJvaWRTaW1leCJ9.wzt1D1ju48bt65gjA1XRUchJfIqOw4QeouYgvpQXnHM
+@idOperacion=1
+GET {{ApiSimex_HostAddress}}/api/dashboardcliente/Seguimiento/{{idOperacion}}
+Authorization: Bearer {{miTokenVip}}
+
+###

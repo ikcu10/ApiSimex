@@ -13,7 +13,7 @@ namespace ApiSimex.Controllers
     [Authorize]
     public class PedidosComercialController : ControllerBase
     {
-        private readonly SimexContext _context; // Tu DbContext
+        private readonly SimexContext _context;
 
         // Inyectamos la base de datos a través del constructor
         public PedidosComercialController(SimexContext context)
@@ -35,7 +35,7 @@ namespace ApiSimex.Controllers
                 return Unauthorized(new { mensaje = "Token inválido o sin ID de usuario" });
             }
 
-            int agenteId = int.Parse(idString); // Convertimos el texto del Token a número entero
+            int agenteId = int.Parse(idString);
 
             // 1. Empezamos la consulta en la tabla de operaciones logísticas
             var query = _context.OperacionsLogistiques
@@ -53,7 +53,7 @@ namespace ApiSimex.Controllers
             // 2. Filtramos por el Agente Comercial
             query = query.Where(ol => ol.Oferta.AgentComercialId == agenteId);
 
-            // 3. Aplicamos el buscador (si el usuario escribió algo)
+            // 3. Aplicamos el buscador
             if (!string.IsNullOrWhiteSpace(searchQuery))
             {
                 query = query.Where(ol =>
@@ -61,14 +61,14 @@ namespace ApiSimex.Controllers
                     ol.Oferta.Client.Usuari.Nom.Contains(searchQuery));
             }
 
-            // 4. Mapeamos al DTO y aplicamos Paginación para el RecyclerView
+            // 4. Mapeamos al DTO
             var pedidos = await query
                 .Skip((page - 1) * pageSize)
                 .Take(pageSize)
                 .Select(ol => new PedidoAgenteDTO
                 {
                     Id = ol.Id,
-                    PedidoCodigo = ol.Id.ToString(), // O usa ol.OfertaId.ToString() si prefieres
+                    PedidoCodigo = ol.Id.ToString(),
                     ClienteNombre = ol.Oferta.Client.Usuari.Nom,
                     Origen = ol.Oferta.PortOrigen.Ciutat.Nom,
                     Destino = ol.Oferta.PortDesti.Ciutat.Nom,
@@ -121,7 +121,7 @@ namespace ApiSimex.Controllers
                 ClienteNombre = operacion.Oferta.Client.Usuari.Nom,
                 Origen = operacion.Oferta.PortOrigen.Ciutat.Nom,
                 Destino = operacion.Oferta.PortDesti.Ciutat.Nom,
-                // Ordenamos los pasos estrictamente por el campo 'Ordre'
+                
                 Pasos = operacion.SeguimentOperacions
                     .OrderBy(so => so.TrackingStep.Ordre)
                     .Select(so => new PasoSeguimientoDTO
@@ -129,7 +129,6 @@ namespace ApiSimex.Controllers
                         TrackingStepId = so.TrackingStepId,
                         Nombre = so.TrackingStep.Nom,
                         Estado = so.EstatDelPas,
-                        // CORRECCIÓN 1: Manejo de nulos en Ordre
                         Orden = so.TrackingStep.Ordre ?? 0
                     }).ToList()
             };
@@ -170,7 +169,6 @@ namespace ApiSimex.Controllers
             pasoActual.DataCompletat = DateTime.Now;
 
             // 5. Buscar cuál es el siguiente paso lógico basándonos en el 'Ordre'
-            // CORRECCIÓN 2: Manejo de nulos en Ordre
             int ordenActual = pasoActual.TrackingStep.Ordre ?? 0;
 
             var pasoSiguiente = operacion.SeguimentOperacions
@@ -185,8 +183,6 @@ namespace ApiSimex.Controllers
             }
             else
             {
-                // Era el último paso, así que rellenamos la DataFi de la operación general
-                // CORRECCIÓN 3: Formateo de DateTime a DateOnly
                 operacion.DataFi = DateOnly.FromDateTime(DateTime.Now);
             }
 

@@ -1,9 +1,10 @@
-using Microsoft.EntityFrameworkCore;
 using ApiSimex.Models;
+using ApiSimex.Servicios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using System.Text;
 using Microsoft.OpenApi.Models;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -61,6 +62,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"] ?? ""))
         };
     });
+
+builder.Services.AddHostedService<DniSocketServer>();
 
 var app = builder.Build();
 

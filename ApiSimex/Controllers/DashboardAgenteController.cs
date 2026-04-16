@@ -16,28 +16,27 @@ namespace ApiSimex.Controllers
             _context = context;
         }
 
-        // ====================================================================
-        // ENDPOINT 1: RESUMEN DEL DASHBOARD (Las 3 tarjetas)
-        // GET: api/DashboardAgent/resumen/5 (donde 5 es el ID del agente)
-        // ====================================================================
+        
+        // ENDPOINT: RESUMEN DEL DASHBOARD (Las 3 tarjetas)
+        
         [HttpGet("resumen/{agentId}")]
         public async Task<ActionResult<ResumenDashboardDTO>> GetResumen(int agentId)
         {
             // 1. Buscamos todas las operaciones logísticas que nacen de ofertas de este agente
             var operacionesDelAgente = _context.OperacionsLogistiques
-                .Include(op => op.Oferta) // Incluimos la oferta para poder leer el AgentComercialId y el ClientId
+                .Include(op => op.Oferta)
                 .Where(op => op.Oferta.AgentComercialId == agentId);
 
-            // 2. Calculamos los 3 números mágicos directamente en la base de datos
+            // 2. Calculamos los 3 números directamente en la base de datos
             var totalOperaciones = await operacionesDelAgente.CountAsync();
 
             var totalClientes = await operacionesDelAgente
                 .Select(op => op.Oferta.ClientId)
-                .Distinct() // Distinct asegura que no contemos al mismo cliente dos veces
+                .Distinct()
                 .CountAsync();
 
             var operacionesEnCurso = await operacionesDelAgente
-                .Where(op => op.DataFi == null) // La genialidad que se te ocurrió: data_fi es nulo
+                .Where(op => op.DataFi == null)
                 .CountAsync();
 
             // 3. Montamos el DTO y lo enviamos
@@ -51,14 +50,13 @@ namespace ApiSimex.Controllers
             return Ok(resumen);
         }
 
-        // ====================================================================
-        // ENDPOINT 2: CONTEXTO LOGÍSTICO (Alertas Globales)
-        // GET: api/DashboardAgent/alertas
-        // ====================================================================
+        
+        // ENDPOINT: CONTEXTO LOGÍSTICO (Alertas Globales)
+        
         [HttpGet("alertas")]
         public async Task<ActionResult<IEnumerable<AlertaGlobalDTO>>> GetAlertasGlobals()
         {
-            // Simplemente leemos toda la tabla aislada y la mapeamos al DTO
+            // Leemos toda la tabla y la mapeamos al DTO
             var alertas = await _context.AlertesGlobals
                 .Select(a => new AlertaGlobalDTO
                 {
