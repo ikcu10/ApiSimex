@@ -10,7 +10,7 @@ namespace ApiSimex.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+    // [Authorize]
     public class DashboardClienteController : ControllerBase
     {
         private readonly SimexContext _context;
@@ -23,8 +23,9 @@ namespace ApiSimex.Controllers
         // Método auxiliar privado para leer el "tatuaje" del Token (El ID del usuario)
         private int ObtenerUsuarioIdDelToken()
         {
-            var claimId = User.FindFirst(ClaimTypes.NameIdentifier);
-            return claimId != null ? int.Parse(claimId.Value) : 0;
+            // var claimId = User.FindFirst(ClaimTypes.NameIdentifier);
+            // return claimId != null ? int.Parse(claimId.Value) : 0;
+            return 2;
         }
 
         
